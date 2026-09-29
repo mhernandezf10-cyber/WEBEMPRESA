@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eH8SxFF1WXY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\malle\\Desktop\\WebEmpresa\\WebEmpresa.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\malle\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.12\\microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
