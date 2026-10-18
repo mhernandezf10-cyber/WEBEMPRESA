@@ -1,3 +1,4 @@
+
 using ApiCliente.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("ConexionSQLAzure")
+        ?? throw new InvalidOperationException(
+            "No se encontró la cadena de conexión ConexionSQLAzure")));
 
 builder.Services.AddOpenApi();
 
@@ -18,9 +22,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

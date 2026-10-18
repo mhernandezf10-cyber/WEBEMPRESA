@@ -18,8 +18,18 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.Use(async (context, next) =>
+{
+    context.Response.OnStarting(() =>
+    {
+        context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+        return Task.CompletedTask;
+    });
 
+    await next();
+});
+
+app.UseHttpsRedirection();
 app.UseAntiforgery();
 
 app.MapStaticAssets();
